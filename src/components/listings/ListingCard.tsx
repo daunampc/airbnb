@@ -3,9 +3,10 @@ import useCountries from "@/hook/useCountries";
 import { IListingCardProps } from "@/types/listing";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
-import UserMenu from "../navbar/UserMenu";
 import { format } from "date-fns";
 import Image from "next/image";
+import HeartButton from "../HeartButton";
+import Button from "../Button";
 
 const ListingCard: React.FC<IListingCardProps> = ({
   data,
@@ -35,7 +36,7 @@ const ListingCard: React.FC<IListingCardProps> = ({
     }
     return data.price;
   }, [reservation, data.price]);
-  const seservationDate = useMemo(() => {
+  const reservationDate = useMemo(() => {
     if (!reservation) {
       return null;
     }
@@ -57,7 +58,28 @@ const ListingCard: React.FC<IListingCardProps> = ({
             src={data.imageSrc}
             className="object-cover h-full w-full group-hover:scale-110 transition"
           />
+          <div className="absolute top-3 right-3">
+            <HeartButton listingId={data.id} currentUser={currentUser} />
+          </div>
         </div>
+        <div className="font-semibold text-lg">
+          {location?.region}, {location?.label}
+        </div>
+        <div className="font-light text-neutral-500">
+          {reservationDate || data.category}
+        </div>
+        <div className="flex flex-row items-center gap-1">
+          <div className="font-semibold">${price}</div>
+          {!reservationDate && <div className="font-light">night</div>}
+        </div>
+        {onAction && actionLabel && (
+          <Button
+            disabled={disabled}
+            small
+            label={actionLabel}
+            onClick={handleCancel}
+          />
+        )}
       </div>
     </div>
   );

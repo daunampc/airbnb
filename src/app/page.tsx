@@ -4,10 +4,10 @@ import ClientOnly from "@/components/ClientOnly";
 import Container from "@/components/Container";
 import EmptyState from "@/components/EmptyState";
 import ListingCard from "@/components/listings/ListingCard";
+import { IHomeProps } from "@/types/home";
 
-export default async function Home() {
-  const isEmpty = true;
-  const listings = await getListings();
+const Home = async ({ searchParams }: IHomeProps) => {
+  const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
   if (listings.length === 0) {
@@ -34,4 +34,6 @@ export default async function Home() {
       </Container>
     </ClientOnly>
   );
-}
+};
+export default Home;
+export const dynamic = "force-dynamic";

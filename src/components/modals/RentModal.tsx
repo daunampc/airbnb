@@ -7,7 +7,7 @@ import Heading from "../Heading";
 import { categoriesData } from "@/types/categories";
 import CategoryInput from "../inputs/CategoryInput";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import CategorySelect from "../inputs/CategorySelect";
+import CountrySelect from "../inputs/CategorySelect";
 import dynamic from "next/dynamic";
 import Counter from "../inputs/Counter";
 import ImageUpload from "../inputs/ImageUpload";
@@ -132,7 +132,7 @@ const RentModal = () => {
           title="Where is your place located ?"
           subtitle="Help guests find you!"
         />
-        <CategorySelect
+        <CountrySelect
           value={location}
           onChange={(value) => setCustomValue("location", value)}
         />

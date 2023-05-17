@@ -5,14 +5,14 @@ import { IButtonProps } from "@/types/button";
 const Button: React.FC<IButtonProps> = ({
   label,
   onClick,
-  disable,
+  disabled,
   small,
   outline,
   icon: Icon,
 }) => {
   return (
     <button
-      disabled={disable}
+      disabled={disabled}
       onClick={onClick}
       className={`
         relative 

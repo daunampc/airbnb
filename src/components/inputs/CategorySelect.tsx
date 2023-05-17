@@ -3,7 +3,7 @@
 import useCountries from "@/hook/useCountries";
 import { ICountrySelectProps, TCountrySelectValue } from "@/types/country";
 import Select from "react-select";
-const CategorySelect: React.FC<ICountrySelectProps> = ({ value, onChange }) => {
+const CountrySelect: React.FC<ICountrySelectProps> = ({ value, onChange }) => {
   const { getAll, getByValue } = useCountries();
   return (
     <div className="">
@@ -40,4 +40,4 @@ const CategorySelect: React.FC<ICountrySelectProps> = ({ value, onChange }) => {
     </div>
   );
 };
-export default CategorySelect;
+export default CountrySelect;
